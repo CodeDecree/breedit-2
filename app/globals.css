@@ -57,3 +57,28 @@
     @apply bg-background text-foreground;
   }
 }
+
+.cardContainer {
+  width: 90vw;
+  max-width: 260px;
+  height: 300px;
+}
+.card {
+  position: relative;
+  background-color: #fff;
+  width: 80vw;
+  max-width: 260px;
+  height: 300px;
+  box-shadow: 0px 0px 60px 0px rgba(0,0,0,0.30);
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+}
+.card h3 {
+  position: absolute;
+  bottom: 0;
+  margin: 10px;
+}
+.swipe {
+  position: absolute;
+}

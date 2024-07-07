@@ -2,6 +2,7 @@
 import { SwipeUsers, getOpositeGenderUsers } from "@/actions/swipe";
 import { updateMatches } from "@/actions/update-matches";
 import { currentUser } from "@/lib/user-from-server";
+import { url } from "inspector";
 import { useEffect, useState } from "react";
 import TinderCard from "react-tinder-card";
 
@@ -34,25 +35,15 @@ export const SwipeCard = () => {
   return (
     <div className="dashboard overflow-hidden">
       <div className="swipe-container">
-        <div className="card-container">
-          {filteredGenderedUsers?.length === 0 && <div>No users left</div>}
-          {filteredGenderedUsers?.map((genderedUser: any) =>
-            genderedUser && genderedUser.userId ? (
-              <TinderCard
-                className="swipe"
-                key={genderedUser.userId}
-                onSwipe={(dir) => swiped(dir, genderedUser.userId)}
-                onCardLeftScreen={() => outOfFrame(genderedUser.petName)}
-              >
-                <div className="card">
-                  <h3 className="text-end font-[Oswald] font-thin tracking-wide text-lg text-[#f7ebdb] p-4 drop-shadow-2xl antialiased">
-                    {genderedUser.petName}
-                  </h3>
-                </div>
-              </TinderCard>
-            ) : null,
-          )}
-        </div>
+      <div className='cardContainer'>
+        {filteredGenderedUsers.map((character: any) =>
+          <TinderCard className='swipe' key={character.userId} onSwipe={(dir) => swiped(dir, character.userId)} onCardLeftScreen={() => outOfFrame(character.petName)}>
+            <div style={{ backgroundImage: 'url(' + character.image + ')' }} className='card'>
+              <h3 className=" text-primary antialiased">{character.petName}</h3>
+            </div>
+          </TinderCard>
+        )}
+      </div>
       </div>
     </div>
   );
